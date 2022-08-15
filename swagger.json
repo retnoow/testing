@@ -1,0 +1,104 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Binar Gamehub API",
+    "description": "here some description",
+    "version": "0.0.1"
+  },
+  "tags": [
+    {
+      "name": "players",
+      "description": "Everything about players data"
+    }
+  ],
+  "paths": {
+    "/players": {
+      "post": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Create new player data",
+        "description": "Create new player data using JSON payload",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Player Data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "playername"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "player@mail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password"
+                }
+              }
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "422": {
+            "description": "Failed to process payload"
+          }
+        }
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "get player data",
+        "description": "get player data by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "player ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success finding player data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "playername"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "player@mail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
